@@ -43,12 +43,66 @@ void	init_stack(t_stack *stack, char **argv)
 	stack->head = first;
 }
 
+/*
+the check_arguments function checks if each and every argv argument actually is a number
+argv consists of an array of strings so we loop through every character of every string 
+and for each character we check if it is a number or not
+whenever a non-digit is found return 0, if only digits are found a 1 is returned.
+*/
+
+int		arguments_are_digits(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j]))
+			{
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+/*
+the no_double_arguments function checks 
+if the data integers of the nodes from a stack
+are all unique so that there are no duplicates
+*/
+
+int		check_doubles(t_stack *stack)
+{
+	t_node	*node = stack->first;
+	int numbers[];
+
+	while (node)
+	{
+		if (numbers[node->value])
+			return (1);
+		else
+			number[node->value] = 1;
+		node->next;
+		
+	}
+}
+
 void	push_swap(char **argv)
 {
 	t_stack *stack_a;
-
+	/* TODO: check if arguments are valid */
+	arguments_are_digits(argv);
+	check_doubles(stack_a);
 	stack_a = malloc(sizeof(t_stack));
 	init_stack(stack_a, argv);
+	/* now that stack a is initialized... things have to be done, but what? */
+	/* TODO: check for doubles */
+
 	print_stack(stack_a);
 }
 
