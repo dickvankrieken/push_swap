@@ -44,17 +44,18 @@ void	init_stack(t_stack *stack, char **argv)
 }
 
 /*
-the check_arguments function checks if each and every argv argument actually is a number
-argv consists of an array of strings so we loop through every character of every string 
-and for each character we check if it is a number or not
-whenever a non-digit is found return 0, if only digits are found a 1 is returned.
+the check_arguments function checks if each argv argument actually is a number
+when a non-digit is found 0 is returned
+if only digits are found a 1 is returned.
 */
 
 int		arguments_are_digits(char **argv)
 {
 	int	i;
+	int j;
 
 	i = 1;
+	j = 0;
 	while (argv[i])
 	{
 		while (argv[i][j])
@@ -70,39 +71,58 @@ int		arguments_are_digits(char **argv)
 	return (1);
 }
 
-/*
-the no_double_arguments function checks 
-if the data integers of the nodes from a stack
-are all unique so that there are no duplicates
-*/
-
-int		check_doubles(t_stack *stack)
+int		check_duplicates(t_stack *stack)
 {
-	t_node	*node = stack->first;
-	int numbers[];
+	t_node	*node;
+	t_node	*compare_node;
+	int	size;
 
+	size = stack->size;
+	node = stack->head;
+	while (node->next != stack->head)
+	{
+		compare_node = node->next;
+		while (compare_node != node)
+		{
+			if (compare_node->data == node->data)
+			{
+				return (1);
+			}
+			compare_node = compare_node->next;
+		}
+		node = node->next;
+	}
+	return (0);
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_node	*node;
+	t_node	*next_node;
+
+	node = stack->head;
 	while (node)
 	{
-		if (numbers[node->value])
-			return (1);
-		else
-			number[node->value] = 1;
-		node->next;
-		
+		next_node = node->next;
+		free(node);
+		node = next_node;
 	}
+	free(stack);
 }
 
 void	push_swap(char **argv)
 {
 	t_stack *stack_a;
-	/* TODO: check if arguments are valid */
+
 	arguments_are_digits(argv);
-	check_doubles(stack_a);
+
 	stack_a = malloc(sizeof(t_stack));
 	init_stack(stack_a, argv);
-	/* now that stack a is initialized... things have to be done, but what? */
-	/* TODO: check for doubles */
-
+	if(check_duplicates(stack_a))
+	{
+		ft_printf("Invalid input, contains duplicates");
+		free_stack(stack_a);
+	}
 	print_stack(stack_a);
 }
 
