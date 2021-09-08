@@ -1,10 +1,10 @@
 #include "../push_swap.h"
 #include "../libft/includes/libft.h"
 
-int		arguments_are_digits(char **argv)
+int	arguments_are_digits(char **argv)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 1;
 	j = 0;
@@ -26,13 +26,11 @@ int		arguments_are_digits(char **argv)
 	return (1);
 }
 
-/* als het argument alleen digits bevat maar voorafgegaan wordt met een - (minus) dan is het ook een valide digit */
-
-int		check_duplicates(t_stack *stack)
+int	check_duplicates(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*compare_node;
-	int	size;
+	int		size;
 
 	size = stack->size;
 	node = stack->head;

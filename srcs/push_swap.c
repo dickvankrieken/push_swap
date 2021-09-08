@@ -4,7 +4,7 @@
 
 void	print_stack(t_stack *stack)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = stack->head;
 	ft_printf("%d\n", node->data);
@@ -21,7 +21,7 @@ void	init_stack(t_stack *stack, char **argv)
 	t_node	*new_node;
 	t_node	*node;
 	t_node	*first;
-	int	i;
+	int		i;
 
 	new_node = malloc(sizeof(t_node));
 	new_node->data = ft_atoi(argv[1]);
@@ -61,27 +61,39 @@ void	free_stack(t_stack *stack)
 
 void	push_swap(char **argv)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-	if(!arguments_are_digits(argv))
+	if (!arguments_are_digits(argv))
 	{
 		ft_printf("Invalid input, not all arguments are digits");
 		exit(EXIT_FAILURE);
-	};
+	}
 	stack_a = malloc(sizeof(t_stack));
 	init_stack(stack_a, argv);
-	if(check_duplicates(stack_a))
+	if (check_duplicates(stack_a))
 	{
 		ft_printf("Invalid input, contains duplicates");
 		free_stack(stack_a);
 		exit(EXIT_FAILURE);
 	}
 	stack_b = malloc(sizeof(t_stack));
+	stack_b->size = 0;
 	print_stack(stack_a);
 	push(stack_a, stack_b);
-	ft_printf("stack na swap: \n");
+	ft_printf("stack a na push: \n");
 	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+	push(stack_a, stack_b);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+	push(stack_a, stack_b);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
 	print_stack(stack_b);
 }
 
