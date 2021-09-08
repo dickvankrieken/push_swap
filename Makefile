@@ -2,11 +2,20 @@ NAME_PS = push_swap
 
 NAME_C = checker
 
-SRCS_PS = push_swap.c
+SRC_DIR = srcs/
+
+SRCFILES_PS = push_swap.c \
+	utils.c \
+	swap.c \
+	push.c
+
+SRCS_PS = $(addprefix $(SRC_DIR),$(SRCFILES_PS))
 
 SRCS_C = checker.c
 
-OBJS_PS = $(SRCS_PS:.c=.o)
+OBJ_DIR = objs/
+
+OBJS_PS = $(addprefix $(OBJ_DIR),$(SRCFILES_PS:.c=.o))
 
 LIBFT = libft/libft.a
 
@@ -15,7 +24,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME_PS)
 
 $(NAME_PS): $(OBJS_PS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME_PS) $(LIBFT) $(OBJS_PS)
+	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME_PS) $(LIBFT) $(OBJS_PS)
 
 $(NAME_C): $(OBJS_PS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME_C) $(LIBFT) $(OBJS_C)
@@ -23,14 +32,15 @@ $(NAME_C): $(OBJS_PS) $(LIBFT)
 $(LIBFT):
 	make -C libft
 
-%.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+$(addprefix $(OBJ_DIR),%.o): $(addprefix $(SRC_DIR),%.c)
+	$(CC) -g -fsanitize=address $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f *.o
+	rm -f $(addprefix $(OBJ_DIR),*.o)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME_PS)
+	rm -f $(NAME_C)
 
 re: fclean all
 
