@@ -34,10 +34,10 @@ int	check_duplicates(t_stack *stack)
 
 	size = stack->size;
 	node = stack->head;
-	while (node->next != stack->head)
+	while (node->next != NULL)
 	{
 		compare_node = node->next;
-		while (compare_node != node)
+		while (compare_node != NULL)
 		{
 			if (compare_node->data == node->data)
 			{
