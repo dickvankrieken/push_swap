@@ -9,11 +9,20 @@ typedef struct s_node
 typedef struct s_stack
 {
 	t_node	*head;
-	t_node	*tail;
 	size_t	size;
 }	t_stack;
 
+/* utils.c */
 int		arguments_are_digits(char **argv);
 int		check_duplicates(t_stack *stack);
+/* swap.c */
 void	swap(t_stack *stack);
+/* push.c */
 void	push(t_stack *from, t_stack *to);
+/* rotate.c */
+void	rotate(t_stack *stack);
+void	reverse_rotate(t_stack *stack);
+/* stacks.c */
+void	print_stack(t_stack *stack);
+void	init_stack(t_stack *stack, char **argv);
+void	free_stack(t_stack *stack);	
