@@ -13,6 +13,11 @@ void	push_swap(char **argv)
 		exit(EXIT_FAILURE);
 	}
 	stack_a = malloc(sizeof(t_stack));
+	if (!stack_a)
+	{
+		ft_printf("Malloc error");
+		exit(EXIT_FAILURE);
+	}
 	init_stack(stack_a, argv);
 	if (check_duplicates(stack_a))
 	{
@@ -21,30 +26,84 @@ void	push_swap(char **argv)
 		exit(EXIT_FAILURE);
 	}
 	stack_b = malloc(sizeof(t_stack));
+	if (!stack_b)
+	{
+		ft_printf("Malloc error");
+		free_stack(stack_a);
+		exit(EXIT_FAILURE);
+	}
 	stack_b->size = 0;
 	
+
+
+
+
 	ft_printf("stack a na init: \n");	
 	print_stack(stack_a);
 
-	rotate(stack_a);
-	ft_printf("stack a na rotate: \n");
-	print_stack(stack_a);
+	/* reverse_rotate(stack_a); */
+	/* ft_printf("stack a na rotate: \n"); */
+	/* print_stack(stack_a); */
 
-	reverse_rotate(stack_a);
-	ft_printf("stack a na reverse_rotate: \n");
-	print_stack(stack_a);
+	/* reverse_rotate(stack_a); */
+	/* ft_printf("stack a na reverse_rotate: \n"); */
+	/* print_stack(stack_a); */
 	
-	/* push(stack_a, stack_b); */
-	/* ft_printf("stack a na push: \n"); */
+	/* reverse_rotate(stack_a); */
+	/* ft_printf("stack a na rotate: \n"); */
 	/* print_stack(stack_a); */
-	/* ft_printf("stack b na push: \n"); */
-	/* print_stack(stack_b); */
 
-	/* push(stack_a, stack_b); */
-	/* ft_printf("stack a na push: \n"); */
+	/* reverse_rotate(stack_a); */
+	/* ft_printf("stack a na reverse_rotate: \n"); */
 	/* print_stack(stack_a); */
-	/* ft_printf("stack b na push: \n"); */
-	/* print_stack(stack_b); */
+	
+	push(stack_a, stack_b);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+
+	push(stack_a, stack_b);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+
+	push(stack_a, stack_b);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+
+	push(stack_a, stack_b);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+
+	push(stack_b, stack_a);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+
+	push(stack_b, stack_a);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+
+	push(stack_b, stack_a);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
+	
+	push(stack_b, stack_a);
+	ft_printf("stack a na push: \n");
+	print_stack(stack_a);
+	ft_printf("stack b na push: \n");
+	print_stack(stack_b);
 
 	/* swap(stack_b); */
 	/* ft_printf("stack b na swap: \n"); */

@@ -4,11 +4,7 @@ NAME_C = checker
 
 SRC_DIR = srcs/
 
-SRCFILES_SHARED = stacks.c \
-	utils.c \
-	swap.c \
-	push.c \
-	rotate.c
+SRCFILES_SHARED =	stacks.c utils.c swap.c push.c rotate.c error.c
 
 SRCS_SHARED = $(addprefix $(SRC_DIR),$(SRCFILES_SHARED))
 

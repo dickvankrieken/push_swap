@@ -1,5 +1,6 @@
 #include "../push_swap.h"
 #include "../libft/includes/libft.h"
+#include "../libft/includes/ft_printf.h"
 
 int	arguments_are_digits(char **argv)
 {
@@ -30,21 +31,26 @@ int	check_duplicates(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*compare_node;
-	int		size;
+	size_t	i;
+	size_t	j;
 
-	size = stack->size;
+	i = 1;
+	j = 1;
 	node = stack->head;
-	while (node->next != NULL)
+	while (i < stack->size)
 	{
 		compare_node = node->next;
-		while (compare_node != NULL)
+		while (j < stack->size)
 		{
 			if (compare_node->data == node->data)
 			{
 				return (1);
 			}
 			compare_node = compare_node->next;
+			j++;
 		}
+		j = i;
+		i++;
 		node = node->next;
 	}
 	return (0);

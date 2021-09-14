@@ -7,35 +7,64 @@ void	print_stack(t_stack *stack)
 	t_node	*node;
 
 	node = stack->head;
-	while (node != NULL)
+	while (node && 1)
 	{
 		ft_printf("%d\n", node->data);
 		node = node->next;
+		if (node == stack->head)
+			break ;
 	}
+}
+
+t_node	*create_head_node(t_stack *stack, int data)
+{
+	t_node	*new_node;
+
+	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		error();
+	new_node->data = data;
+	new_node->next = new_node;
+	new_node->prev = new_node;
+	stack->head = new_node;
+	stack->tail = new_node;
+	stack->size = 1;
+	return (new_node);
+}
+
+t_node	*create_new_node(t_stack *stack, t_node *prev, t_node *first, int data)
+{
+	t_node	*new_node;
+
+	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		error();
+	new_node->data = data;
+	prev->next = new_node;
+	new_node->next = first;
+	new_node->prev = prev;
+	stack->head->prev = new_node;
+	stack->tail = new_node;
+	stack->size++;
+	return (new_node);
 }
 
 void	init_stack(t_stack *stack, char **argv)
 {
 	t_node	*new_node;
-	t_node	*node;
+	t_node	*previous;
+	t_node	*first;
 	int		i;
 
-	new_node = malloc(sizeof(t_node));
-	new_node->data = ft_atoi(argv[1]);
-	new_node->next = NULL;
-	node = new_node;
-	stack->head = new_node;
-	stack->size++;
+	new_node = create_head_node(stack, ft_atoi(argv[1]));
+	previous = new_node;
+	first = new_node;
 	i = 2;
 	while (argv[i])
 	{
-		new_node = malloc(sizeof(t_node));
-		new_node->data = ft_atoi(argv[i]);
-		node->next = new_node;
-		new_node->next = NULL;
-		node = new_node;
+		new_node = create_new_node(stack, previous, first, ft_atoi(argv[i]));
+		previous = new_node;
 		i++;
-		stack->size++;
 	}
 }
 
@@ -45,11 +74,13 @@ void	free_stack(t_stack *stack)
 	t_node	*next_node;
 
 	node = stack->head;
-	while (node)
+	while (1)
 	{
 		next_node = node->next;
 		free(node);
 		node = next_node;
+		if (node == stack->head)
+			break ;
 	}
 	free(stack);
 }
