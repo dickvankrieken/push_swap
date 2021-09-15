@@ -1,34 +1,23 @@
-NAME_PS = push_swap
+NAME_PS =			push_swap
 
-NAME_C = checker
+NAME_C =			checker
 
-SRC_DIR = srcs/
+SRCS_SHARED =		srcs/stacks.c srcs/utils.c srcs/swap.c srcs/push.c srcs/rotate.c srcs/error.c
+OBJS_SHARED =		$(SRCS_SHARED:.c=.o)
 
-SRCFILES_SHARED =	stacks.c utils.c swap.c push.c rotate.c error.c
+SRCS_PS = 			srcs/push_swap.c
+OBJS_PS =			$(SRCS_PS:.c=.o)
 
-SRCS_SHARED = $(addprefix $(SRC_DIR),$(SRCFILES_SHARED))
+SRCS_C =			srcs/checker.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+OBJS_C =			$(SRCS_C:.c=.o)
 
-SRCFILES_PS = push_swap.c
+SRC_DIR =			srcs/
 
-SRCS_PS = $(addprefix $(SRC_DIR),$(SRCFILES_PS))
+LIBFT =				libft/libft.a
 
-SRCFILES_C = checker.c
+CFLAGS =			-Wall -Werror -Wextra
 
-SRCS_C = $(addprefix $(SRC_DIR),$(SRCFILES_C))
-
-OBJ_DIR = objs/
-
-OBJS_PS = $(addprefix $(OBJ_DIR),$(SRCFILES_PS:.c=.o))
-
-OBJS_C = $(addprefix $(OBJ_DIR),$(SRCFILES_C:.c=.o))
-
-OBJS_SHARED = $(addprefix $(OBJ_DIR),$(SRCFILES_SHARED:.c=.o))
-
-LIBFT = libft/libft.a
-
-CFLAGS = -Wall -Werror -Wextra
-
-all: $(OBJ_DIR) $(NAME_PS) $(NAME_C)
+all: $(NAME_PS) $(NAME_C)
 
 $(NAME_PS): $(OBJS_PS) $(OBJS_SHARED) $(LIBFT)
 	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME_PS) $(LIBFT) $(OBJS_PS) $(OBJS_SHARED)
@@ -39,14 +28,12 @@ $(NAME_C): $(OBJS_C) $(OBJS_SHARED) $(LIBFT)
 $(LIBFT):
 	make -C libft
 
-$(addprefix $(OBJ_DIR),%.o): $(addprefix $(SRC_DIR),%.c)
+%.o: %.c
 	$(CC) -g -fsanitize=address $(CFLAGS) -o $@ -c $<
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
 clean:
-	rm -f $(addprefix $(OBJ_DIR),*.o)
+	rm -f $(addprefix $(SRC_DIR),*.o)
+	make -C libft clean
 
 fclean: clean
 	rm -f $(NAME_PS)

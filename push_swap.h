@@ -20,7 +20,7 @@ typedef struct s_data
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-}
+} t_data;
 
 /* utils.c */
 int		arguments_are_digits(char **argv);

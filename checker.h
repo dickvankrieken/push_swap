@@ -21,3 +21,5 @@ typedef struct s_operation
 	t_code	code;
 	struct s_operation	*next;
 }	t_operation;
+
+#endif

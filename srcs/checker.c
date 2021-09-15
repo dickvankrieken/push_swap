@@ -2,6 +2,7 @@
 #include "../push_swap.h"
 #include "../checker.h"
 #include "../libft/includes/ft_printf.h"
+#include "../get_next_line/get_next_line.h"
 
 t_stack	*validate_arguments_and_init_stack(char **argv)
 {
@@ -19,6 +20,13 @@ t_stack	*validate_arguments_and_init_stack(char **argv)
 		error();
 	}
 	return stack_a;
+}
+
+void	check_input(char *line)
+{
+	/*how to compare this line? */
+	if (line)
+		ft_printf("WTF");
 }
 
 void	checker(char **argv)
@@ -39,10 +47,14 @@ void	checker(char **argv)
 	operation_list = malloc(sizeof(t_operation));
 	if (!operation_list)
 	{
-		free_stack(stack_a)
+		free_stack(stack_a);
 		error();
 	}
-	get_next_line(0, &line);
+	while (get_next_line(0, &line))
+	{
+		check_input(line);
+		ft_printf("%s", line);
+	}
 /* WIP */
 	print_stack(stack_a);
 }
@@ -52,5 +64,5 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 	{
 		checker(argv);
-	}		
+	}
 }
