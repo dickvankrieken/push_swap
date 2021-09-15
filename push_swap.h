@@ -16,6 +16,12 @@ typedef struct s_stack
 	size_t	size;
 }	t_stack;
 
+typedef struct s_data
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+}
+
 /* utils.c */
 int		arguments_are_digits(char **argv);
 int		check_duplicates(t_stack *stack);
