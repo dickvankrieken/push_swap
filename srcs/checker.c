@@ -24,8 +24,9 @@ t_stack	*validate_arguments_and_init_stack(char **argv)
 void	checker(char **argv)
 {
 	t_stack	*stack_a;
-	t_stack	*stack_b; 
-
+	t_stack	*stack_b;
+	t_operation	*operation_list;
+	char *line;
 
 	stack_a = validate_arguments_and_init_stack(argv);
 	stack_b = malloc(sizeof(t_stack));
@@ -35,6 +36,13 @@ void	checker(char **argv)
 		error();
 	}
 	stack_b->size = 0;
+	operation_list = malloc(sizeof(t_operation));
+	if (!operation_list)
+	{
+		free_stack(stack_a)
+		error();
+	}
+	get_next_line(0, &line);
 /* WIP */
 	print_stack(stack_a);
 }
