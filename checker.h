@@ -27,15 +27,18 @@ typedef struct s_operation_list
 {
 	t_code	*head;
 	t_code	*tail;
-}
+}	t_operation_list;
 
 typedef struct s_c_data
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_operation	*operation_list;
+	t_operation_list	*operation_list;
 }	t_c_data;
 
-void	add_operation(t_c_data *data);
+void	add_operation(int code, t_c_data *data);
+void	validate_arguments_and_init_stack(t_c_data *data, char **argv);
+void	validate_input(t_c_data *data, char *line);
+void	free_and_exit_checker(t_c_data *data);
 
 #endif

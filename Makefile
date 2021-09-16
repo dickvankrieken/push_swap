@@ -8,7 +8,7 @@ OBJS_SHARED =		$(SRCS_SHARED:.c=.o)
 SRCS_PS = 			srcs/push_swap.c
 OBJS_PS =			$(SRCS_PS:.c=.o)
 
-SRCS_C =			srcs/checker.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRCS_C =			srcs/checker.c srcs/checker_utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 OBJS_C =			$(SRCS_C:.c=.o)
 
 SRC_DIR =			srcs/
