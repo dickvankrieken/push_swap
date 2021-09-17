@@ -25,6 +25,7 @@ typedef struct s_data
 /* utils.c */
 int		arguments_are_digits(char **argv);
 int		check_duplicates(t_stack *stack);
+void	validate_arguments_and_init_stack(t_stack *stack_a, t_stack *stack_b, char **argv);
 /* swap.c */
 void	swap(t_stack *stack);
 /* push.c */
@@ -40,5 +41,6 @@ t_node	*create_head_node(t_stack *stack, int data);
 t_node	*create_new_node(t_stack *stack, t_node *previous, t_node *first, int data);
 /* error.c */
 void	error();
+
 
 #endif

@@ -5,41 +5,44 @@
 #include "../libft/includes/ft_printf.h"
 #include "../get_next_line/get_next_line.h"
 
-void	malloc_stacks(t_c_data *data)
+void	malloc_stacks(t_stack *stack_a, t_stack *stack_b)
 {
-	data->stack_a = malloc(sizeof(t_stack));
-	if (!data->stack_a)
+	stack_a = malloc(sizeof(t_stack));
+	if (!stack_a)
 	{
 		error();
 	}
-	data->stack_b = malloc(sizeof(t_stack));
-	if (!data->stack_a)
+	stack_b = malloc(sizeof(t_stack));
+	if (!stack_a)
 	{
-		free(data->stack_a);
-		free(data);
+		free(stack_a);
 		error();
 	}
 }
 
-void	free_and_exit_checker(t_c_data *data)
+void	free_and_exit_checker(t_stack *stack_a, t_stack *stack_b)
 {
-	free(data->stack_a);
-	free(data->stack_b);
-	free(data);
+	if (stack_a)
+		free(stack_a);
+	if (stack_b)
+		free(stack_b);
 	exit(EXIT_FAILURE);
 }
 
 void	checker(char **argv)
 {
-	t_c_data *data;
-	char *line;
-	data = malloc(sizeof(t_c_data));
-	if (!data)
-		error();
-	validate_arguments_and_init_stack(data, argv);
-	data->operation_list = malloc(sizeof(t_operation_list));
-	if (!data->operation_list)
-		free_and_exit_checker(data);
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	t_operation_list	*operation_list;
+
+	char		*line;
+	stack_a = NULL;
+	if (!stack_b)
+		ft_printf("OK");
+	validate_arguments_and_init_stack(stack_a, stack_b, argv);
+	operation_list = malloc(sizeof(t_operation_list));
+	if (!operation_list)
+		free_and_exit_checker(stack_a, stack_b);
 	while (get_next_line(0, &line))
 	{
 /* wat er nu moet gebeuren: die check_input functie moet gaan kijken of de ingegeven lijn een correcte input is of dat het een ERROR geeft en gaat die input opslaan in de linked list  */

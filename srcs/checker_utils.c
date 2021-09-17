@@ -1,33 +1,10 @@
-#include "../push_swap.h"
+ #include "../push_swap.h"
 #include "../checker.h"
 #include "../libft/includes/libft.h"
 
-void	validate_arguments_and_init_stack(t_c_data *data, char **argv)
+void	add_operation(int code, t_operation_list *operation_list)
 {
-	if (!arguments_are_digits(argv))
-		error();
-	data->stack_a = malloc(sizeof(t_stack));
-	if (!data->stack_a)
-		error();
-	init_stack(data->stack_a, argv);
-	if (check_duplicates(data->stack_a))
-	{
-		free_stack(data->stack_a);
-		error();
-	}
-	data->stack_b = malloc(sizeof(t_stack));
-	if (!data->stack_b)
-	{
-		free_stack(data->stack_a);
-		error();
-	}
-	data->stack_b->size = 0;
-}
-
-
-void	add_operation(int code, t_c_data *data)
-{
-	if (!data->operation_list->head)
+	if (!operation_list->head)
 	{
 		data->operation_list->head = malloc(sizeof(t_code));
 		if (!data->operation_list->head)
@@ -35,6 +12,7 @@ void	add_operation(int code, t_c_data *data)
 	}
 }
 
+/*
 void	validate_input(t_c_data *data, char *line)
 {
 	if (!ft_strncmp(line, "sa", 2))
@@ -58,3 +36,4 @@ void	validate_input(t_c_data *data, char *line)
 	if (!ft_strncmp(line, "rrr", 2))
 		add_operation(data, 9);
 }
+*/
