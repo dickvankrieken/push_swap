@@ -30,6 +30,7 @@ typedef struct s_operation_list
 }	t_operation_list;
 
 void	add_operation(int code, t_operation_list *operation_list);
+void	read_input(t_operation_list *operation_list);
 // void	validate_input(t_c_data *data, char *line);
 
 #endif

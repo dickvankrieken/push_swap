@@ -1,39 +1,21 @@
- #include "../push_swap.h"
+#include "../push_swap.h"
 #include "../checker.h"
 #include "../libft/includes/libft.h"
+#include "../libft/includes/ft_printf.h"
+#include "../get_next_line/get_next_line.h"
 
-void	add_operation(int code, t_operation_list *operation_list)
+void	validate_line(char *line)
 {
-	if (!operation_list->head)
+	if (ft_strncmp("OK", line, 2))
+		ft_printf("SAME");
+}
+
+void	read_input(t_operation_list *operation_list)
+{
+	char *line;
+	while (get_next_line(0, &line))
 	{
-		data->operation_list->head = malloc(sizeof(t_code));
-		if (!data->operation_list->head)
-			free_and_exit_checker(data);
+		validate_line(line);
 	}
-}
 
-/*
-void	validate_input(t_c_data *data, char *line)
-{
-	if (!ft_strncmp(line, "sa", 2))
-		add_operation(data, 0);
-	if (!ft_strncmp(line, "sb", 2))
-		add_operation(data, 1);
-	if (!ft_strncmp(line, "ss", 2))
-		add_operation(data, 2);
-	if (!ft_strncmp(line, "pa", 2))
-		add_operation(data, 3);
-	if (!ft_strncmp(line, "pb", 2))
-		add_operation(data, 4);
-	if (!ft_strncmp(line, "ra", 2))
-		add_operation(data, 5);
-	if (!ft_strncmp(line, "rb", 2))
-		add_operation(data, 6);
-	if (!ft_strncmp(line, "rra", 2))
-		add_operation(data, 7);
-	if (!ft_strncmp(line, "rrb", 2))
-		add_operation(data, 8);
-	if (!ft_strncmp(line, "rrr", 2))
-		add_operation(data, 9);
 }
-*/

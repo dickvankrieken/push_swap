@@ -35,22 +35,19 @@ void	checker(char **argv)
 	t_stack	*stack_b;
 	t_operation_list	*operation_list;
 
-	char		*line;
 	stack_a = NULL;
+	stack_b = NULL;
 	if (!stack_b)
 		ft_printf("OK");
-	validate_arguments_and_init_stack(stack_a, stack_b, argv);
+	validate_arguments_and_init_stacks(stack_a, stack_b, argv);
 	operation_list = malloc(sizeof(t_operation_list));
 	if (!operation_list)
 		free_and_exit_checker(stack_a, stack_b);
-	while (get_next_line(0, &line))
-	{
 /* wat er nu moet gebeuren: die check_input functie moet gaan kijken of de ingegeven lijn een correcte input is of dat het een ERROR geeft en gaat die input opslaan in de linked list  */
-		validate_input(data, line);
-		ft_printf("%s", line);
-	}
+	read_input(operation_list);
+
 /* WIP */
-	print_stack(data->stack_a);
+	print_stack(stack_a);
 }
 
 int	main(int argc, char **argv)

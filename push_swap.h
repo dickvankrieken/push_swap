@@ -25,7 +25,7 @@ typedef struct s_data
 /* utils.c */
 int		arguments_are_digits(char **argv);
 int		check_duplicates(t_stack *stack);
-void	validate_arguments_and_init_stack(t_stack *stack_a, t_stack *stack_b, char **argv);
+void	validate_arguments_and_init_stacks(t_stack *stack_a, t_stack *stack_b, char **argv);
 /* swap.c */
 void	swap(t_stack *stack);
 /* push.c */
