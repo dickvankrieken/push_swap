@@ -8,13 +8,7 @@ void	push_swap(char **argv)
 	t_stack	*stack_b;
 
 	arguments_are_digits(argv);
-	stack_a = malloc(sizeof(t_stack));
-	if (!stack_a)
-	{
-		ft_printf("Malloc error");
-		exit(EXIT_FAILURE);
-	}
-	init_stack(stack_a, argv);
+	stack_a = init_stack(argv);
 	if (check_duplicates(stack_a))
 	{
 		ft_printf("Invalid input, contains duplicates");
@@ -29,7 +23,10 @@ void	push_swap(char **argv)
 		exit(EXIT_FAILURE);
 	}
 	stack_b->size = 0;
-
+	if (is_sorted(stack_a, stack_b))
+		free_stacks_and_exit(stack_a, stack_b);
+	else
+		ft_sort(stack_a, stack_b);
 
 
 

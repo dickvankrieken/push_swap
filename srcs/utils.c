@@ -55,24 +55,3 @@ int	check_duplicates(t_stack *stack)
 	}
 	return (0);
 }
-
-void	validate_arguments_and_init_stacks(t_stack *stack_a, t_stack *stack_b, char **argv)
-{
-	arguments_are_digits(argv);
-	stack_a = malloc(sizeof(t_stack));
-	if (!stack_a)
-		error();
-	init_stack(stack_a, argv);
-	if (check_duplicates(stack_a))
-	{
-		free_stack(stack_a);
-		error();
-	}
-	stack_b = malloc(sizeof(t_stack));
-	if (!stack_b)
-	{
-		free_stack(stack_a);
-		error();
-	}
-	stack_b->size = 0;
-}

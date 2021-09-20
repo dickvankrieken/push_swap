@@ -49,13 +49,17 @@ t_node	*create_new_node(t_stack *stack, t_node *prev, t_node *first, int data)
 	return (new_node);
 }
 
-void	init_stack(t_stack *stack, char **argv)
+t_stack	*init_stack(char **argv)
 {
+	t_stack	*stack;
 	t_node	*new_node;
 	t_node	*previous;
 	t_node	*first;
 	int		i;
 
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		error();
 	new_node = create_head_node(stack, ft_atoi(argv[1]));
 	previous = new_node;
 	first = new_node;
@@ -66,6 +70,7 @@ void	init_stack(t_stack *stack, char **argv)
 		previous = new_node;
 		i++;
 	}
+	return (stack);
 }
 
 void	free_stack(t_stack *stack)
