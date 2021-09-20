@@ -1,10 +1,7 @@
 #include "../push_swap.h"
 
-void	push(t_stack *from, t_stack *to)
+void	push_check_last_node(t_stack *from)
 {
-	t_node	*tmp;
-
-	tmp = from->head;
 	if (from->size == 1)
 	{
 		from->head = NULL;
@@ -16,6 +13,16 @@ void	push(t_stack *from, t_stack *to)
 		from->tail->next = from->head;
 	}
 	from->size--;
+}
+
+void	push(t_stack *from, t_stack *to)
+{
+	t_node	*tmp;
+
+	if (from->size == 0)
+		return ;
+	tmp = from->head;
+	push_check_last_node(from);
 	if (to->size == 0)
 	{
 		tmp->next = tmp;

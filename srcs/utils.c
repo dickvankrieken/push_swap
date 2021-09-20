@@ -2,7 +2,7 @@
 #include "../libft/includes/libft.h"
 #include "../libft/includes/ft_printf.h"
 
-int	arguments_are_digits(char **argv)
+void	arguments_are_digits(char **argv)
 {
 	int	i;
 	int	j;
@@ -17,14 +17,14 @@ int	arguments_are_digits(char **argv)
 				j++;
 			else if (!ft_isdigit(argv[i][j]))
 			{
-				return (0);
+				ft_printf("Invalid input, not all arguments are digits");
+				exit(EXIT_FAILURE);
 			}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	return (1);
 }
 
 int	check_duplicates(t_stack *stack)
@@ -58,8 +58,7 @@ int	check_duplicates(t_stack *stack)
 
 void	validate_arguments_and_init_stacks(t_stack *stack_a, t_stack *stack_b, char **argv)
 {
-	if (!arguments_are_digits(argv))
-		error();
+	arguments_are_digits(argv);
 	stack_a = malloc(sizeof(t_stack));
 	if (!stack_a)
 		error();

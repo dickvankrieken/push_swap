@@ -7,11 +7,7 @@ void	push_swap(char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	if (!arguments_are_digits(argv))
-	{
-		ft_printf("Invalid input, not all arguments are digits");
-		exit(EXIT_FAILURE);
-	}
+	arguments_are_digits(argv);
 	stack_a = malloc(sizeof(t_stack));
 	if (!stack_a)
 	{
@@ -57,23 +53,23 @@ void	push_swap(char **argv)
 	/* ft_printf("stack a na reverse_rotate: \n"); */
 	/* print_stack(stack_a); */
 
-	push(stack_a, stack_b);
-	ft_printf("stack a na push: \n");
+	swap(stack_a);
+	ft_printf("stack a na swap: \n");
 	print_stack(stack_a);
-	ft_printf("stack b na push: \n");
-	print_stack(stack_b);
+	// ft_printf("stack b na push: \n");
+	// print_stack(stack_b);
 
-	push(stack_a, stack_b);
-	ft_printf("stack a na push: \n");
-	print_stack(stack_a);
-	ft_printf("stack b na push: \n");
-	print_stack(stack_b);
+	// push(stack_a, stack_b);
+	// ft_printf("stack a na push: \n");
+	// print_stack(stack_a);
+	// ft_printf("stack b na push: \n");
+	// print_stack(stack_b);
 
-	push(stack_a, stack_b);
-	ft_printf("stack a na push: \n");
-	print_stack(stack_a);
-	ft_printf("stack b na push: \n");
-	print_stack(stack_b);
+	// push(stack_a, stack_b);
+	// ft_printf("stack a na push: \n");
+	// print_stack(stack_a);
+	// ft_printf("stack b na push: \n");
+	// print_stack(stack_b);
 
 	/* swap(stack_b); */
 	/* ft_printf("stack b na swap: \n"); */
