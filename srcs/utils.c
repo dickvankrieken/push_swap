@@ -2,6 +2,22 @@
 #include "../libft/includes/libft.h"
 #include "../libft/includes/ft_printf.h"
 
+int	is_sorted(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*node;
+
+	node = stack_a->head;
+	if (stack_b->size > 0)
+		return (0);
+	while (node->next != stack_a->head)
+	{
+		if (node->data > node->next->data)
+			return (0);
+		node = node->next;
+	}
+	return (1);
+}
+
 void	arguments_are_digits(char **argv)
 {
 	int	i;
@@ -16,10 +32,7 @@ void	arguments_are_digits(char **argv)
 			if (j == 0 && argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))
 				j++;
 			else if (!ft_isdigit(argv[i][j]))
-			{
-				ft_printf("Invalid input, not all arguments are digits");
-				exit(EXIT_FAILURE);
-			}
+				error();
 			j++;
 		}
 		j = 0;
@@ -27,7 +40,7 @@ void	arguments_are_digits(char **argv)
 	}
 }
 
-int	check_duplicates(t_stack *stack)
+void	check_duplicates(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*compare_node;
@@ -44,7 +57,8 @@ int	check_duplicates(t_stack *stack)
 		{
 			if (compare_node->data == node->data)
 			{
-				return (1);
+				free_stack(stack);
+				error();
 			}
 			compare_node = compare_node->next;
 			j++;
@@ -53,5 +67,4 @@ int	check_duplicates(t_stack *stack)
 		i++;
 		node = node->next;
 	}
-	return (0);
 }

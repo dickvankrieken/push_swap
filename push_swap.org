@@ -1,44 +1,4 @@
-#+TITLE: push_swap
 
-* next steps
-** TODO checker schrijven
-*** TODO de operaties moeten gelezen worden en ergens worden opgeslagen alvorens ze afgevuurd worden op de stack
-**** TODO een linked list opzetten voor de operaties van het checker programma
-* waiting
-** TODO de projectblogpost updaten
-** TODO push_swap schrijven
-* vraagtekens
-** of het een probleem is dat een call naar push een segfault geeft als de stack leeg is, d.w.z. als de size == 0 en de head & tail niet zijn toegwezen of naar NULL wijzen
-moet ik dat probleem opvangen in de functie zelf, of is dat de verantwoordelijkheid van de functie waarin die functie wordt aangeroepen?
-in principe zou er nooit gepush moeten worden als de stack leeg is, en moet een functie die push gaat aanroepen er voor waken dat dat nooit gebeurt. Als dat dan wel gebeurt en er een segfault optreed, dan is dat de fout van de functie die vanaf een lege stack wou pushen.
-* files and functions
-** shared
-*** [[./srcs/checker.c]]
-*** [[./srcs/error.c]]
-*** [[./srcs/nodes.c]]
-*** [[./srcs/push.c]]
-push
-*** [[./srcs/push_swap.c]]
-*** [[./srcs/rotate.c]]
-rotate
-reverse rotate
-*** [[./srcs/stacks.c]]
-print_stack
-init_stack
-free_stack
-*** [[./srcs/swap.c]]
-swap
-*** [[./srcs/utils.c]]
-arguments_are_digits
-check_duplicates
-** push_swap
-*** [[./srcs/push_swap.c]]
-push_swap
-main
-** checker
-*** [[./srcs/checker.c]]
-* resources
-** [[./push_swap.subject.pdf]]
 *** checker subject vertaling
 de checker krijgt als argumenten de stack a, geformat als een lijst van integers.
 als er geen argument is gegeven stopt checker en geeft het niets weer

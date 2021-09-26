@@ -2,6 +2,20 @@
 #include "../libft/includes/libft.h"
 #include "../push_swap.h"
 
+static t_stack	*malloc_stack_b(t_stack *stack_a)
+{
+	t_stack	*stack_b;
+
+	stack_b = malloc(sizeof(t_stack));
+	if (!stack_b)
+	{
+		free_stack(stack_a);
+		error();
+	}
+	stack_b->size = 0;
+	return (stack_b);
+}
+
 void	push_swap(char **argv)
 {
 	t_stack	*stack_a;
@@ -9,30 +23,15 @@ void	push_swap(char **argv)
 
 	arguments_are_digits(argv);
 	stack_a = init_stack(argv);
-	if (check_duplicates(stack_a))
-	{
-		ft_printf("Invalid input, contains duplicates");
-		free_stack(stack_a);
-		exit(EXIT_FAILURE);
-	}
-	stack_b = malloc(sizeof(t_stack));
-	if (!stack_b)
-	{
-		ft_printf("Malloc error");
-		free_stack(stack_a);
-		exit(EXIT_FAILURE);
-	}
-	stack_b->size = 0;
+	check_duplicates(stack_a);
+	stack_b = malloc_stack_b(stack_a);
 	if (is_sorted(stack_a, stack_b))
 		free_stacks_and_exit(stack_a, stack_b);
 	else
-		ft_sort(stack_a, stack_b);
-
-
-
-
-	ft_printf("stack a na init: \n");
-	print_stack(stack_a);
+		sort(stack_a, stack_b);
+}
+	// ft_printf("stack a na init: \n");
+	// print_stack(stack_a);
 
 	/* reverse_rotate(stack_a); */
 	/* ft_printf("stack a na rotate: \n"); */
@@ -50,9 +49,9 @@ void	push_swap(char **argv)
 	/* ft_printf("stack a na reverse_rotate: \n"); */
 	/* print_stack(stack_a); */
 
-	swap(stack_a);
-	ft_printf("stack a na swap: \n");
-	print_stack(stack_a);
+	// swap(stack_a);
+	// ft_printf("stack a na swap: \n");
+	// print_stack(stack_a);
 	// ft_printf("stack b na push: \n");
 	// print_stack(stack_b);
 
@@ -75,7 +74,6 @@ void	push_swap(char **argv)
 	/* swap(stack_b);	 */
 	/* ft_printf("stack b na swap: \n"); */
 	/* print_stack(stack_b); */
-}
 
 int	main(int argc, char **argv)
 {

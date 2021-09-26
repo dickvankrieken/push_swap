@@ -1,4 +1,17 @@
 #include "../push_swap.h"
+#include "../libft/includes/ft_printf.h"
+
+void	sa(t_stack *stack)
+{
+	swap(stack);
+	ft_printf("sa\n");
+}
+
+void	sb(t_stack *stack)
+{
+	swap(stack);
+	ft_printf("sb\n");
+}
 
 void	swap(t_stack *stack)
 {

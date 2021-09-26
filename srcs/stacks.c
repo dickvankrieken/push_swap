@@ -16,37 +16,11 @@ void	print_stack(t_stack *stack)
 	}
 }
 
-t_node	*create_head_node(t_stack *stack, int data)
+void	free_stacks_and_exit(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*new_node;
-
-	new_node = malloc(sizeof(t_node));
-	if (!new_node)
-		error();
-	new_node->data = data;
-	new_node->next = new_node;
-	new_node->prev = new_node;
-	stack->head = new_node;
-	stack->tail = new_node;
-	stack->size = 1;
-	return (new_node);
-}
-
-t_node	*create_new_node(t_stack *stack, t_node *prev, t_node *first, int data)
-{
-	t_node	*new_node;
-
-	new_node = malloc(sizeof(t_node));
-	if (!new_node)
-		error();
-	new_node->data = data;
-	prev->next = new_node;
-	new_node->next = first;
-	new_node->prev = prev;
-	stack->head->prev = new_node;
-	stack->tail = new_node;
-	stack->size++;
-	return (new_node);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	exit(EXIT_SUCCESS);
 }
 
 t_stack	*init_stack(char **argv)
@@ -79,13 +53,16 @@ void	free_stack(t_stack *stack)
 	t_node	*next_node;
 
 	node = stack->head;
-	while (1)
+	if (stack->size > 0)
 	{
-		next_node = node->next;
-		free(node);
-		node = next_node;
-		if (node == stack->head)
-			break ;
+		while (1)
+		{
+			next_node = node->next;
+			free(node);
+			node = next_node;
+			if (node == stack->head)
+				break ;
+		}
 	}
 	free(stack);
 }

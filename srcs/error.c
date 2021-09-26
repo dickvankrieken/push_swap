@@ -2,7 +2,7 @@
 #include "../push_swap.h"
 #include <stdlib.h>
 
-void	error()
+void	error(void)
 {
 	ft_printf("Error");
 	exit(EXIT_FAILURE);
