@@ -5,6 +5,7 @@
 typedef struct s_node
 {
 	int	data;
+	int index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -23,6 +24,7 @@ typedef struct s_data
 }	t_data;
 
 /* utils.c */
+void	set_index(t_stack *stack);
 void		arguments_are_digits(char **argv);
 void		check_duplicates(t_stack *stack);
 void	validate_arguments_and_init_stacks(t_stack *stack_a, t_stack *stack_b, char **argv);
@@ -44,6 +46,7 @@ void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
 /* stacks.c */
+void	print_stack_index(t_stack *stack);
 void	print_stack(t_stack *stack);
 t_stack	*init_stack(char **argv);
 void	free_stack(t_stack *stack);
@@ -55,5 +58,7 @@ t_node	*create_new_node(t_stack *stack, t_node *previous, t_node *first, int dat
 void	error();
 /* sort.c */
 void	sort(t_stack *stack_a, t_stack *stack_b);
+/* sort_five.c */
+void	sort_five(t_stack *stack_a, t_stack *stack_b);
 
 #endif

@@ -1,6 +1,38 @@
 #include "../push_swap.h"
+#include <limits.h>
 #include "../libft/includes/libft.h"
 #include "../libft/includes/ft_printf.h"
+
+void	set_index(t_stack *stack)
+{
+	t_node	*node;
+	size_t	i;
+	size_t	j;
+	int		smallest;
+	int		prev_smallest;
+
+	i = 0;
+	j = 0;
+	node = stack->head;
+	smallest = node->data;
+	prev_smallest = INT_MIN;
+	while (i < stack->size)
+	{
+		while (j < stack->size)
+		{
+			if (node->data < smallest && node->data > prev_smallest)
+			{
+				smallest = node->data;
+				node->index = j;
+			}
+			node = node->next;
+			j++;
+		}
+		prev_smallest = smallest;
+		j = i;
+		i++;
+	}
+}
 
 int	is_sorted(t_stack *stack_a, t_stack *stack_b)
 {
