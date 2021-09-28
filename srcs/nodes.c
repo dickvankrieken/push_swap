@@ -11,6 +11,7 @@ t_node	*create_head_node(t_stack *stack, int data)
 	new_node->data = data;
 	new_node->next = new_node;
 	new_node->prev = new_node;
+	new_node->index = 0;
 	stack->head = new_node;
 	stack->tail = new_node;
 	stack->size = 1;
@@ -28,6 +29,7 @@ t_node	*create_new_node(t_stack *stack, t_node *prev, t_node *first, int data)
 	prev->next = new_node;
 	new_node->next = first;
 	new_node->prev = prev;
+	new_node->index = 0;
 	stack->head->prev = new_node;
 	stack->tail = new_node;
 	stack->size++;
