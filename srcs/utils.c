@@ -1,6 +1,5 @@
 #include "../push_swap.h"
 #include "../libft/includes/libft.h"
-#include "../libft/includes/ft_printf.h"
 
 void	set_index(t_stack *stack)
 {

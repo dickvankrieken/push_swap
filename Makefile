@@ -1,5 +1,5 @@
 NAME =			push_swap
-SRCS = 			srcs/push_swap.c srcs/stacks.c srcs/utils.c srcs/swap.c srcs/push.c srcs/rotate.c \
+SRCS = 			srcs/push_swap.c srcs/stacks.c srcs/utils.c srcs/utils-2.c srcs/swap.c srcs/push.c srcs/rotate.c \
 				srcs/reverse_rotate.c srcs/error.c srcs/nodes.c srcs/sort.c
 OBJS =			$(SRCS:.c=.o)
 

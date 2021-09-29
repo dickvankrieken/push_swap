@@ -1,6 +1,14 @@
 #include "../push_swap.h"
 #include "../libft/includes/ft_printf.h"
 
+void	push_all_b_to_a(t_stack *stack_a, t_stack *stack_b)
+{
+	while (stack_b->size)
+	{
+		pa(stack_a, stack_b);
+	}
+}
+
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	push(stack_b, stack_a);

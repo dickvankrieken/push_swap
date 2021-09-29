@@ -29,11 +29,14 @@ void		arguments_are_digits(char **argv);
 void		check_duplicates(t_stack *stack);
 void	validate_arguments_and_init_stacks(t_stack *stack_a, t_stack *stack_b, char **argv);
 int	is_sorted(t_stack *stack_a, t_stack *stack_b);
+/* utils-2.c */
+int		get_max_bit(int size);
 /* swap.c */
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
 void	swap(t_stack *stack);
 /* push.c */
+void	push_all_b_to_a(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 void	push(t_stack *from, t_stack *to);
