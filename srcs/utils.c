@@ -11,7 +11,7 @@ void	set_index(t_stack *stack)
 	i = 0;
 	node = stack->head;
 	compare_node = stack->head;
-	while (i < (int)stack->size)
+	while (i <= (int)stack->size)
 	{
 		while (j < (int)stack->size)
 		{

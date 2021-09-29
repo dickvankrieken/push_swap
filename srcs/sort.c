@@ -15,13 +15,10 @@ static void	sort_rest(t_stack *stack_a, t_stack *stack_b)
 	stack_size = stack_a->size;
 	node = stack_a->head;
 	max_bit = get_max_bit(stack_a->size);
-	ft_printf("max_bit = %d\n", max_bit);
 	while (i <= max_bit)
 	{
-		ft_printf("NEXT\n");
 		while (j < stack_size)
 		{
-			ft_printf("--index=%d--\n", node->index);
 			next = node->next;
 			if ((node->index >> i) & 1)
 			{
@@ -35,8 +32,8 @@ static void	sort_rest(t_stack *stack_a, t_stack *stack_b)
 			j++;
 		}
 		j = 0;
-		node = stack_a->head;
 		push_all_b_to_a(stack_a, stack_b);
+		node = stack_a->head;
 		i++;
 	}
 }
@@ -71,7 +68,7 @@ static void	sort_three(t_stack *stack_a)
 void	sort(t_stack *stack_a, t_stack *stack_b)
 {
 	set_index(stack_a);
-	print_stack_index(stack_a);
+//	print_stack_index(stack_a);
 	if (stack_a->size == 2)
 	{
 		if (stack_a->head->data > stack_a->head->next->data)
@@ -85,6 +82,5 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	else
 	{
 		sort_rest(stack_a, stack_b);
-		ft_printf("size stack_b: %d \n", stack_b->size);
 	}
 }
