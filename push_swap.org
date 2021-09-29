@@ -1,10 +1,6 @@
-
-*** checker subject vertaling
-de checker krijgt als argumenten de stack a, geformat als een lijst van integers.
-als er geen argument is gegeven stopt checker en geeft het niets weer
-
-checker wacht vervolgens en leest instructies van de standaard input, waarbij iedere instructie opgevolgd wordt door een '\n'. Als alle instructies gelezen zijn, zal de checker ze uitvoeren op de stack die het ontving als argument.
-
-als, na het uitvoeren van de instructies, stack a daadwerkelijk gesorteerd is, en b leeg is, dan zal checker "OK" moeten weergeven, gevolgd door een '\n' op de standaard input. In ieder ander geval, moet checker "KO",  weergeven, gevolgd door een '\n'.
-
-als er een error plaats vind, moet Error weergegeven worden. Errors bevatten bijvoorbeeld: sommige argumenten zijn geen integers, sommige argumenten zijn groter dan een integer, er zijn duplicaten, een instructie bestaat niet, of is niet correct geformat
+* om te testen
+ARG=`ruby -e "puts (0..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG
+of
+ARG=`seq 0 500 | sort -R | tr "\n" " "` ; ./push_swap $ARG
+of
+ARG=`echo {0..500}$'\n' | sort -R | tr "\n" " "` ; ./push_swap $ARG

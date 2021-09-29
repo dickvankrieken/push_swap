@@ -34,7 +34,7 @@ void	push_swap(char **argv)
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
-		ft_printf("Not enough arguments");
+		error();
 	else
 		push_swap(argv);
 }
