@@ -3,19 +3,19 @@
 
 static void	sort_rest(t_stack *stack_a, t_stack *stack_b)
 {
-	int	max_bit;
+	int		max_bit;
 	t_node	*node;
 	t_node	*next;
-	int	i;
-	int	j;
-	int	stack_size;
+	int		i;
+	int		j;
+	int		stack_size;
 
 	j = 0;
 	i = 0;
 	stack_size = stack_a->size;
 	node = stack_a->head;
 	max_bit = get_max_bit(stack_a->size);
-	while (i <= max_bit)
+	while (i <= max_bit) // dit lijkt 1 keer te vaak er door te loopen, maar zonder die laatste loop gaat het ook niet goed .
 	{
 		while (j < stack_size)
 		{
@@ -65,6 +65,34 @@ static void	sort_three(t_stack *stack_a)
 	}
 }
 
+static void	sort_five(t_stack *stack_a, t_stack *stack_b)
+{
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	sort_three(stack_a);
+	if (stack_b->head->index < stack_b->tail->index)
+		sb(stack_b);
+	if (stack_b->head->index == 4)
+	{
+		pa(stack_a, stack_b);
+		ra(stack_a);
+	}
+	if (stack_b->head->index >= 3)
+	{
+	}
+	if (stack_b->head->index <= 2)
+	{
+	}
+	while (stack_b->size)
+	{
+		if ((stack_a->head->index - 1) == stack_b->head->index)
+			pa(stack_a, stack_b);
+		ra(stack_a);
+	}
+	while (stack_a->head->index != 0)
+		ra(stack_a);
+}
+
 void	sort(t_stack *stack_a, t_stack *stack_b)
 {
 	set_index(stack_a);
@@ -79,8 +107,8 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	}
 	else if (stack_a->size == 3)
 		sort_three(stack_a);
+	else if (stack_a->size <= 5)
+		sort_five(stack_a, stack_b);
 	else
-	{
 		sort_rest(stack_a, stack_b);
-	}
 }
