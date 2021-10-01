@@ -61,7 +61,8 @@ t_node	*create_new_node(t_stack *stack, t_node *previous, t_node *first, int dat
 void	error();
 /* sort.c */
 void	sort(t_stack *stack_a, t_stack *stack_b);
-///* sort_five.c */
-// void	sort_five(t_stack *stack_a, t_stack *stack_b);
-
+void	sort_three(t_stack *stack_a);
+/* sort_four_five.c */
+void	sort_four(t_stack *stack_a, t_stack *stack_b);
+void	sort_five(t_stack *stack_a, t_stack *stack_b);
 #endif
