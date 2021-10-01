@@ -4,8 +4,8 @@
 
 typedef struct s_node
 {
-	int	data;
-	int index;
+	int				data;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -25,10 +25,10 @@ typedef struct s_data
 
 /* utils.c */
 void	set_index(t_stack *stack);
-void		arguments_are_digits(char **argv);
-void		check_duplicates(t_stack *stack);
-void	validate_arguments_and_init_stacks(t_stack *stack_a, t_stack *stack_b, char **argv);
-int	is_sorted(t_stack *stack_a, t_stack *stack_b);
+void	arguments_are_digits(char **argv);
+void	check_duplicates(t_stack *stack);
+void	validate_arguments_and_init_stacks(t_stack *a, t_stack *b, char **argv);
+int		is_sorted(t_stack *stack_a, t_stack *stack_b);
 /* utils-2.c */
 int		get_max_bit(int size);
 /* swap.c */
@@ -56,9 +56,9 @@ void	free_stack(t_stack *stack);
 void	free_stacks_and_exit(t_stack *stack_a, t_stack *stack_b);
 /* nodes.c */
 t_node	*create_head_node(t_stack *stack, int data);
-t_node	*create_new_node(t_stack *stack, t_node *previous, t_node *first, int data);
+t_node	*create_new_node(t_stack *stack, t_node *prev, t_node *first, int data);
 /* error.c */
-void	error();
+void	error(void);
 /* sort.c */
 void	sort(t_stack *stack_a, t_stack *stack_b);
 void	sort_three(t_stack *stack_a);

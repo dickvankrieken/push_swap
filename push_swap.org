@@ -1,6 +1,0 @@
-* om te testen
-ARG=`ruby -e "puts (0..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG
-of
-ARG=`seq 0 500 | sort -R | tr "\n" " "` ; ./push_swap $ARG
-of
-ARG=`echo {0..500}$'\n' | sort -R | tr "\n" " "` ; ./push_swap $ARG

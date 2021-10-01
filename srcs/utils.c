@@ -1,5 +1,6 @@
 #include "../push_swap.h"
 #include "../libft/includes/libft.h"
+#include "../libft/includes/ft_printf.h"
 
 void	set_index(t_stack *stack)
 {
@@ -9,6 +10,7 @@ void	set_index(t_stack *stack)
 	int		j;
 
 	i = 0;
+	j = 0;
 	node = stack->head;
 	compare_node = stack->head;
 	while (i < (int)stack->size)

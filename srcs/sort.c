@@ -1,41 +1,43 @@
 #include "../push_swap.h"
 #include "../libft/includes/ft_printf.h"
 
-static void	sort_rest(t_stack *stack_a, t_stack *stack_b)
+static void	sort_rest_loop(t_stack *a, t_stack *b, int max_bit, int size)
 {
-	int		max_bit;
 	t_node	*node;
 	t_node	*next;
 	int		i;
 	int		j;
-	int		stack_size;
 
-	j = 0;
 	i = 0;
-	stack_size = stack_a->size;
-	node = stack_a->head;
-	max_bit = get_max_bit(stack_a->size);
-	while (i <= max_bit) // dit lijkt 1 keer te vaak er door te loopen, maar zonder die laatste loop gaat het ook niet goed .
+	j = 0;
+	node = a->head;
+	while (i <= max_bit)
 	{
 		while (j < stack_size)
 		{
 			next = node->next;
 			if ((node->index >> i) & 1)
-			{
-				ra(stack_a);
-			}
+				ra(a);
 			else
-			{
-				pb(stack_a, stack_b);
-			}
+				pb(a, b);
 			node = next;
 			j++;
 		}
 		j = 0;
-		push_all_b_to_a(stack_a, stack_b);
-		node = stack_a->head;
+		push_all_b_to_a(a, b);
+		node = a->head;
 		i++;
 	}
+}
+
+static void	sort_rest(t_stack *stack_a, t_stack *stack_b)
+{
+	int		max_bit;
+	int		stack_size;
+
+	stack_size = stack_a->size;
+	max_bit = get_max_bit(stack_a->size);
+	sort_rest_loop(stack_a, stack_b, max_bit, stack_size);
 }
 
 void	sort_three(t_stack *stack_a)
@@ -47,7 +49,6 @@ void	sort_three(t_stack *stack_a)
 	first = stack_a->head->data;
 	second = stack_a->head->next->data;
 	last = stack_a->tail->data;
-
 	if (last > first && last < second)
 	{
 		sa(stack_a);
@@ -69,7 +70,6 @@ void	sort_three(t_stack *stack_a)
 void	sort(t_stack *stack_a, t_stack *stack_b)
 {
 	set_index(stack_a);
-	print_stack_index(stack_a);
 	if (stack_a->size == 2)
 	{
 		if (stack_a->head->data > stack_a->head->next->data)
