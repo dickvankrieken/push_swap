@@ -1,6 +1,0 @@
-push_swap
-*.o
-.DS_Store
-checker_Mac
-checker
-.gitignore
