@@ -11,12 +11,16 @@ void	push_all_b_to_a(t_stack *stack_a, t_stack *stack_b)
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
+	if (stack_b->size == 0)
+		return ;
 	push(stack_b, stack_a);
 	ft_printf("pa\n");
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
+	if (stack_a->size == 0)
+		return ;
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 }
@@ -40,8 +44,6 @@ void	push(t_stack *from, t_stack *to)
 {
 	t_node	*tmp;
 
-	if (from->size == 0)
-		return ;
 	tmp = from->head;
 	push_check_last_node(from);
 	if (to->size == 0)
