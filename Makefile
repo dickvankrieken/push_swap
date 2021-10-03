@@ -1,13 +1,15 @@
 NAME =			push_swap
+
 SRCS = 			srcs/push_swap.c srcs/stacks.c srcs/utils.c srcs/utils-2.c srcs/swap.c srcs/push.c srcs/rotate.c \
 				srcs/reverse_rotate.c srcs/error.c srcs/nodes.c srcs/sort.c srcs/sort_four_five.c
+
 OBJS =			$(SRCS:.c=.o)
 
-SRC_DIR =			srcs/
+SRC_DIR =		srcs/
 
-LIBFT =				libft/libft.a
+LIBFT =			libft/libft.a
 
-CFLAGS =			-Wall -Werror -Wextra
+CFLAGS =		-Wall -Werror -Wextra
 
 all: $(NAME)
 
