@@ -1,5 +1,4 @@
-#include "../libft/includes/ft_printf.h"
-#include "../libft/includes/libft.h"
+#include <stdlib.h>
 #include "../push_swap.h"
 
 static t_stack	*malloc_stack_b(t_stack *stack_a)
@@ -29,6 +28,7 @@ void	push_swap(char **argv)
 		free_stacks_and_exit(stack_a, stack_b);
 	else
 		sort(stack_a, stack_b);
+	free_stacks_and_exit(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
