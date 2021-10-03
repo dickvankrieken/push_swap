@@ -13,7 +13,7 @@ static void	sort_rest_loop(t_stack *a, t_stack *b, int max_bit, int size)
 	node = a->head;
 	while (i <= max_bit)
 	{
-		while (j < stack_size)
+		while (j < size)
 		{
 			next = node->next;
 			if ((node->index >> i) & 1)
@@ -74,8 +74,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (stack_a->head->data > stack_a->head->next->data)
 		{
-			swap(stack_a);
-			ft_printf("sa\n");
+			sa(stack_a);
 		}
 	}
 	else if (stack_a->size == 3)
