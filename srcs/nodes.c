@@ -1,5 +1,5 @@
 #include "../push_swap.h"
-#include "../libft/includes/libft.h"
+#include <stdlib.h>
 
 t_node	*create_head_node(t_stack *stack, int data)
 {
