@@ -1,5 +1,4 @@
 #include "../push_swap.h"
-#include "../libft/includes/ft_printf.h"
 
 static int	find_three_four(t_stack *stack_a)
 {
