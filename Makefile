@@ -14,13 +14,13 @@ CFLAGS =		-Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJS) $(OBJS_SHARED) $(LIBFT)
-	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME) $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT) $(OBJS)
 
 $(LIBFT):
 	make -C libft
 
 %.o: %.c
-	$(CC) -g -fsanitize=address $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(addprefix $(SRC_DIR),*.o)
@@ -28,6 +28,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	make -C libft fclean
 
 re: fclean all
 
